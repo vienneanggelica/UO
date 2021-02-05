@@ -1,0 +1,128 @@
+.badge {
+    margin-left: 3px;
+}
+body{
+    background-color: whitesmoke;
+    font-family: 'roboto';
+}
+.header{
+    padding: 1rem;
+    background-color: #1D7CBF;
+}
+.header .brand{
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+.block {
+    display: block;
+}
+.card {
+    border-radius: 0;
+}
+.nav li {
+    margin-bottom: 10px;
+    margin-right: 0.5rem;
+    background-color: white;
+    border-radius: 0;
+    border: black 3px solid;
+}
+.nav li .active{
+    background-color: darkorange !important;
+    border-radius: 0; 
+}
+.nav li .berisi{
+    background-color: #1D7CBF!important;
+    color: white;
+    border-radius: 0; 
+}
+
+.nav li .ragu{
+    background-color:#C0BA18!important;
+    color: white;
+    border-radius: 0; 
+}
+.nav li a{
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.number{
+    background-color: #48cf56;
+    display: inline-block;
+    padding: 1rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.number-text{
+    font-weight: bold;
+}
+.waktu{
+    /* margin-right: 15rem; */
+    margin-right: 13rem;
+}
+.button-container{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.hijau{
+    background-color: #48cf56;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 8px;
+}
+.abu-abu{
+    background-color: gray;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 8px;
+}
+.kuning{
+    background-color: yellow;
+    width: 2rem;
+    height: 2rem;
+}
+.notice-item{
+    display: inline;
+}
+.kembali{
+    background-color: #A7A5A5;
+    color: white;
+    width: 10rem;
+}
+.ragu-ragu{
+    background-color: #C0BA18;
+    color: white;
+    width: 10rem;
+}
+.next{
+    background-color: #1D7CBF;
+    color: white;
+    width: 10rem;
+}
+.kembali:hover,.ragu-ragu:hover,.next:hover{
+    color: white;
+}
+@media only screen and (max-width: 600px) {
+    .waktu {
+      margin-right: 0;
+    }.kembali{
+        background-color: #A7A5A5;
+        color: white;
+        width: 5rem;
+        white-space: normal;
+    }
+    .ragu-ragu{
+        background-color: #C0BA18;
+        color: white;
+        width: 5rem;
+        white-space: normal;
+    }
+    .next{
+        background-color: #1D7CBF;
+        color: white;
+        width: 5rem;
+        white-space: normal;
+    }
+  }
