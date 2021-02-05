@@ -17,7 +17,23 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url(); ?>assets/sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
+  <style>
+    html { 
+      background: url(<?= base_url(); ?>assets/img/backgroundpnp.jpeg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body {
+      background-color: transparent;
+    }
+    .special-card {
+      background-color: rgba(245, 245, 245, 1);
+      opacity: .91;
+    }
+  </style>
 
 </head>
 
-<body class="bg-gradient-primary">
+<body>
