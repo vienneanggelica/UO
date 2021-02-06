@@ -39,7 +39,7 @@
                         <div class="error mx-auto" data-text="404">403</div>
                         <p class="lead text-gray-800 mb-5">Access Forbidden</p>
                         <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                        <a href="<?= base_url('user') ?>">&larr; Back to Dashboard</a>
+                        <a href="<?= base_url('mahasiswa/profil') ?>">&larr; Back to Dashboard</a>
                     </div>
 
                 </div>
@@ -52,7 +52,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; UO 2020</span>
                     </div>
                 </div>
             </footer>
