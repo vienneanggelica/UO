@@ -29,6 +29,14 @@ class Soal_model extends MY_Model
         return $this->db->get()->result_array();
     }
 
+    public function getMhs($where)
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->where($where);
+        return $this->db->get()->row();
+    }
+
     public function getAllJawabanperKelas($where)
     {
         $this->db->select('*, count(id_soal) as jumlah_soal');
@@ -37,6 +45,16 @@ class Soal_model extends MY_Model
         $this->db->join('soal', 'soal_simpan.id_soal = soal.id');
         $this->db->where($where);
         $this->db->group_by('soal_simpan.id_kelas');
+        return $this->db->get()->result_array();
+    }
+
+    public function getSoalPerKelas($where)
+    {
+        $this->db->select('*');
+        $this->db->from('soal_simpan');
+        $this->db->join('kelas', 'soal_simpan.id_kelas = kelas.id');
+        $this->db->join('soal', 'soal_simpan.id_soal = soal.id');
+        $this->db->where($where);
         return $this->db->get()->result_array();
     }
 

@@ -25,34 +25,6 @@ class Soal extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function kelas_soal($id)
-    {
-        $data['title'] = 'Form Input Soal';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['kelas'] = $this->Soal_model->getKelas();
-        $data['id'] = $id;
-        $data['soal'] = $this->Soal_model->getAllSimpan_Soal(['soal.user_email' => $this->session->userdata('email'), 'id_kelas' => $id]);
-        if ($this->input->post('keyword')) {
-            $data['soal'] = $this->Soal_model->cariSoal();
-        }
-
-        $this->form_validation->set_rules('mulai', 'Mulai', 'required');
-        $this->form_validation->set_rules('selesai', 'Selesai', 'required');
-        $this->form_validation->set_rules('waktu', 'Waktu', 'required');
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('soal/kelas_soal', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->Soal_model->simpanSoal($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Soal berhasil disimpan!</div>');
-            redirect('soal/index');
-        }
-    }
-
     public function tambah($id)
     {
         $data['title'] = 'Form Input Soal';
@@ -173,16 +145,62 @@ class Soal extends CI_Controller
         }
     }
 
-    public function ujian()
+    public function kelas_soal($id)
+    {
+        $data['title'] = 'Form Input Soal';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Soal_model->getKelas();
+        $data['id'] = $id;
+        $data['soal'] = $this->Soal_model->getAllSimpan_Soal(['soal.user_email' => $this->session->userdata('email'), 'id_kelas' => $id]);
+        if ($this->input->post('keyword')) {
+            $data['soal'] = $this->Soal_model->cariSoal();
+        }
+
+        $this->form_validation->set_rules('mulai', 'Mulai', 'required');
+        $this->form_validation->set_rules('selesai', 'Selesai', 'required');
+        $this->form_validation->set_rules('waktu', 'Waktu', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('soal/kelas_soal', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Soal_model->simpanSoal($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Soal berhasil disimpan!</div>');
+            redirect('soal/index');
+        }
+    }
+
+    public function ujian($id)
     {
         $data['title'] = 'Form Simpan Soal';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['soal'] = $this->Soal_model->getAllSoalperKelas(['soal_simpan.user_email' => $this->session->userdata('email')]);
+        $data['kelas'] = $this->Soal_model->getKelas();
+        $data['id'] = $id;
+        $data['soal'] = $this->Soal_model->getAllSimpan_Soal(['soal.user_email' => $this->session->userdata('email'), 'id_kelas' => $id]);
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('soal/ujian', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function soal_perkelas()
+    {
+        $data['title'] = 'Form Ujian';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Soal_model->getKelas();
+        $data['mhs'] = $this->Soal_model->getMhs(['email' => $this->session->userdata('email')]);
+        $data['soal'] = $this->Soal_model->getSoalPerKelas(['soal_simpan.id_kelas' => $data['mhs']->kelas]);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('ujian/index', $data);
         $this->load->view('templates/footer');
     }
 }
